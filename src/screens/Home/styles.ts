@@ -6,4 +6,10 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.gray600,
   },
+  header: {
+    height: 200,
+    backgroundColor: colors.gray700,
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
