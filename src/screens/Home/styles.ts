@@ -43,4 +43,10 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "bold",
   },
+  info: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 16,
+    paddingVertical: 24,
+  },
 });
