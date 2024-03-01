@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
   form: {
     flexDirection: "row",
     gap: 8,
-    paddingHorizontal: 16,
+    marginHorizontal: 16,
     transform: [{ translateY: -26 }],
   },
   input: {
@@ -46,7 +46,31 @@ export const styles = StyleSheet.create({
   info: {
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingHorizontal: 16,
     paddingVertical: 24,
+    marginHorizontal: 16,
+  },
+  empty: {
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 16,
+    marginHorizontal: 16,
+    paddingHorizontal: 24,
+    paddingVertical: 64,
+    borderTopWidth: 1,
+    borderStyle: "solid",
+    borderColor: colors.gray400,
+  },
+  clipboard: {
+    height: 56,
+    width: 56,
+  },
+  emptyTitle: {
+    color: colors.gray300,
+    fontWeight: "700",
+    textAlign: "center",
+  },
+  emptyText: {
+    color: colors.gray300,
+    textAlign: "center",
   },
 });

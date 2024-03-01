@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { TextInput, TouchableOpacity, View } from "react-native";
+import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { TaskCounter } from "../../components/TaskCounter";
 import { Logo } from "../../assets/Logo";
 import { PlusCircle } from "../../assets/PlusCircle";
+import clipboard from "../../assets/clipboard.png";
 import { colors } from "../../styles/colors";
 import { styles } from "./styles";
 
@@ -47,6 +48,23 @@ export function Home() {
           color={colors.purple}
         />
       </View>
+
+      {tasks.length ? (
+        <></>
+      ) : (
+        <View style={styles.empty}>
+          <Image style={styles.clipboard} source={clipboard} />
+
+          <View>
+            <Text style={styles.emptyTitle}>
+              Você ainda não tem tarefas cadastradas
+            </Text>
+            <Text style={styles.emptyText}>
+              Crie tarefas e organize seus itens a fazer
+            </Text>
+          </View>
+        </View>
+      )}
     </View>
   );
 }
