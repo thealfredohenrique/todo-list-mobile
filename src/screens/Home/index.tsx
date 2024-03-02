@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Image, Text, View } from "react-native";
+import { FlatList, Image, Text, View } from "react-native";
 import { TaskCard } from "../../components/TaskCard";
 import { TaskCounter } from "../../components/TaskCounter";
 import { TaskForm } from "../../components/TaskForm";
@@ -51,7 +51,11 @@ export function Home() {
       </View>
 
       {tasks.length ? (
-        <TaskCard task={tasks[0]}></TaskCard>
+        <FlatList
+          data={tasks}
+          keyExtractor={(task) => task.id}
+          renderItem={({ item }) => <TaskCard task={item} />}
+        />
       ) : (
         <View style={styles.empty}>
           <Image style={styles.clipboard} source={clipboard} />

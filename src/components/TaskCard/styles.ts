@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
     marginHorizontal: 16,
     borderRadius: 8,
     backgroundColor: colors.gray500,
+    marginBottom: 12,
   },
   content: {
     flex: 1,
