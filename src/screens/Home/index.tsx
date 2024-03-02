@@ -29,6 +29,19 @@ export function Home() {
     setTasks((currentValue) => [...currentValue, newTask]);
   }
 
+  function handleToggleIsDoneTask(id: string, value: boolean) {
+    setTasks((currentValue) =>
+      currentValue.map((task) => ({
+        ...task,
+        isDone: task.id === id ? value : task.isDone,
+      }))
+    );
+  }
+
+  function handleDeleteTask(id: string) {
+    setTasks((currentValue) => currentValue.filter((task) => task.id !== id));
+  }
+
   return (
     <View style={styles.wrapper}>
       <View style={styles.header}>
@@ -54,7 +67,13 @@ export function Home() {
         <FlatList
           data={tasks}
           keyExtractor={(task) => task.id}
-          renderItem={({ item }) => <TaskCard task={item} />}
+          renderItem={({ item }) => (
+            <TaskCard
+              task={item}
+              onToggleIsDone={handleToggleIsDoneTask}
+              onDelete={handleDeleteTask}
+            />
+          )}
         />
       ) : (
         <View style={styles.empty}>

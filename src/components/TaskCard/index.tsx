@@ -11,12 +11,27 @@ interface Task {
 
 interface TaskCardProps {
   task: Task;
+  onToggleIsDone: (id: string, value: boolean) => void;
+  onDelete: (id: string) => void;
 }
 
-export function TaskCard({ task }: TaskCardProps) {
+export function TaskCard({ task, onToggleIsDone, onDelete }: TaskCardProps) {
+  function handleToggleIsDone() {
+    onToggleIsDone(task.id, !task.isDone);
+  }
+
+  function handleDelete() {
+    onDelete(task.id);
+  }
+
   return (
-    <View style={styles.wrapper}>
-      <TouchableOpacity>
+    <View
+      style={{
+        ...styles.wrapper,
+        ...styles[task.isDone ? "checked" : "unchecked"],
+      }}
+    >
+      <TouchableOpacity onPress={handleToggleIsDone}>
         {task.isDone ? (
           <CheckCircle size={20} color={colors.purpleDark} />
         ) : (
@@ -24,9 +39,16 @@ export function TaskCard({ task }: TaskCardProps) {
         )}
       </TouchableOpacity>
 
-      <Text style={styles.content}>{task.content}</Text>
+      <Text
+        style={{
+          ...styles.content,
+          textDecorationLine: task.isDone ? "line-through" : "none",
+        }}
+      >
+        {task.content}
+      </Text>
 
-      <TouchableOpacity>
+      <TouchableOpacity onPress={handleDelete}>
         <Trash size={20} color={colors.gray300} />
       </TouchableOpacity>
     </View>
