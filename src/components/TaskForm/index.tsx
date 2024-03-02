@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { TextInput, TouchableOpacity, View } from "react-native";
-import { PlusCircle } from "../../assets/PlusCircle";
+import { PlusCircle } from "../../assets/icons";
+import { colors } from "../../styles/colors";
 import { styles } from "./styles";
 
 interface TaskFormProps {
@@ -20,12 +21,12 @@ export function TaskForm({ onSubmit }: TaskFormProps) {
       <TextInput
         style={styles.input}
         placeholder="Adicione uma nova tarefa"
-        placeholderTextColor="#808080"
+        placeholderTextColor={colors.gray300}
         value={content}
         onChangeText={setContent}
       />
       <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-        <PlusCircle />
+        <PlusCircle size={20} color={colors.white} />
       </TouchableOpacity>
     </View>
   );

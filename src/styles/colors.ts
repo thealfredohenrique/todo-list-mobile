@@ -14,4 +14,5 @@ export const colors = <const>{
   gray700: "#0d0d0d",
 
   danger: "#e25858",
+  white: "#ffffff",
 };
