@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Image, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, Text, View } from "react-native";
 import { TaskCounter } from "../../components/TaskCounter";
+import { TaskForm } from "../../components/TaskForm";
 import { Logo } from "../../assets/Logo";
-import { PlusCircle } from "../../assets/PlusCircle";
 import clipboard from "../../assets/clipboard.png";
 import { colors } from "../../styles/colors";
 import { styles } from "./styles";
@@ -19,22 +19,22 @@ export function Home() {
   const createdTasks = tasks.length;
   const completedTasks = tasks.filter((task) => task.isDone).length;
 
+  function handleAddTask(content: string) {
+    const newTask: Task = {
+      id: String(Date.now()) + String(Math.random()),
+      isDone: false,
+      content,
+    };
+    setTasks((currentValue) => [...currentValue, newTask]);
+  }
+
   return (
     <View style={styles.wrapper}>
       <View style={styles.header}>
         <Logo />
       </View>
 
-      <View style={styles.form}>
-        <TextInput
-          style={styles.input}
-          placeholder="Adicione uma nova tarefa"
-          placeholderTextColor="#808080"
-        />
-        <TouchableOpacity style={styles.button}>
-          <PlusCircle />
-        </TouchableOpacity>
-      </View>
+      <TaskForm onSubmit={handleAddTask} />
 
       <View style={styles.info}>
         <TaskCounter
